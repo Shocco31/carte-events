@@ -20,3 +20,23 @@ var marker = L.marker([48.848215, 2.347622]).addTo(mymap);
 marker.bindPopup("<b>Le Panthéon</b><br>A la Sorbonne :)").openPopup();
 var marker = L.marker([48.853133, 2.349890]).addTo(mymap);
 marker.bindPopup("<b>Cathédrale Notre-Dame de Paris</b><br>Toujours debout :)").openPopup();
+
+// Afficher evenements
+async function getData() {
+    let url = "url-de-l-api"
+    let response = await fetch(url)
+    let data = await response.json()
+    data.records.forEach(function(event) {
+    // le titre de l'événement
+    let title = event.fields.title
+    // la latitude
+    let latitude = event.fields.lat_lon[0]
+    // la longitude
+    let longitude = event.fields.lat_lon[1]
+    // on pourrait récupérer d'autres infos..
+    // pour tester, on les affiche dans la console
+    console.log(title + " " + latitude + " " + longitude)
+    // .. mais ce serait mieux de les afficher sur la carte !
+    })
+    }
+    getData()
